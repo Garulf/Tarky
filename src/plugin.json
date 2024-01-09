@@ -1,0 +1,12 @@
+{
+    "ID": "39f2faf4-b7ca-431d-907a-d1762eba54ac",
+    "ActionKeyword": "tk",
+    "Name": "Tarky",
+    "Description": "Search Escape from Tarkov items using tarkov.dev",
+    "Author": "Garulf",
+    "Version": "0.0.0",
+    "Language": "Python",
+    "Website": "https://github/.com/garulf/tarky",
+    "IcoPath": "icon.png",
+    "ExecuteFileName": "tarky.pyz"
+}
