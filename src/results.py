@@ -4,7 +4,7 @@ from pyflowlauncher.api import open_url
 from pyflowlauncher.result import Result
 from pyflowlauncher.string_matcher import string_matcher
 
-from .tarkov_dev import Item
+from tarkov_dev import Item
 
 
 RUB_SYMBOL = "₽"

@@ -3,7 +3,7 @@ from typing import List, TypedDict
 
 import httpx
 
-from .cache import cache
+from cache import cache
 
 
 BASE_URL = "https://api.tarkov.dev/graphql"

@@ -1,8 +1,8 @@
 from pyflowlauncher import Plugin
 from pyflowlauncher.result import send_results
 
-from .results import item_results
-from .tarkov_dev import items
+from results import item_results
+from tarkov_dev import items
 
 plugin = Plugin()
 
