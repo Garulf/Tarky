@@ -1,0 +1,31 @@
+{
+  "keyword": "tk",
+  "query": "first aid",
+  "icon": "../../data/icon.png",
+  "max_results": 4,
+  "selection": 0,
+  "results": [
+    {
+      "title": "Car first aid kit",
+      "subtitle": "Lowest price: 9,800₽, Avg last 24hr: 10,245₽",
+      "item": "590c661e86f7741e566b646a"
+    },
+    {
+      "title": "Salewa first aid kit",
+      "subtitle": "Lowest price: 21,500₽, Avg last 24hr: 22,318₽",
+      "item": "544fb45d4bdc2dee738b4568"
+    },
+    {
+      "title": "IFAK individual first aid kit",
+      "subtitle": "Lowest price: 27,990₽, Avg last 24hr: 28,640₽",
+      "item": "590c678286f77426c9660122"
+    },
+    {
+      "title": "AFAK tactical individual first aid kit",
+      "subtitle": "Lowest price: 45,000₽, Avg last 24hr: 46,912₽",
+      "item": "60098ad7c2240c0fe85c570a"
+    }
+  ],
+  "query_suggestion": "",
+  "show_caret": false
+}

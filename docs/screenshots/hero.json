@@ -1,0 +1,31 @@
+{
+  "keyword": "tk",
+  "query": "ak",
+  "icon": "../../data/icon.png",
+  "max_results": 4,
+  "selection": 0,
+  "results": [
+    {
+      "title": "Kalashnikov AK-74N 5.45x39 assault rifle",
+      "subtitle": "Lowest price: 31,999₽, Avg last 24hr: 33,412₽",
+      "item": "5644bd2b4bdc2d3b4c8b4572"
+    },
+    {
+      "title": "Kalashnikov AKM 7.62x39 assault rifle",
+      "subtitle": "Lowest price: 38,500₽, Avg last 24hr: 39,870₽",
+      "item": "59d6088586f774275f37482f"
+    },
+    {
+      "title": "Kalashnikov AK-74M 5.45x39 assault rifle",
+      "subtitle": "Lowest price: 41,250₽, Avg last 24hr: 42,106₽",
+      "item": "5ac4cd105acfc40016339859"
+    },
+    {
+      "title": "Kalashnikov AK-103 7.62x39 assault rifle",
+      "subtitle": "Lowest price: 56,000₽, Avg last 24hr: 57,734₽",
+      "item": "5ac66d2e5acfc43b321d4b53"
+    }
+  ],
+  "query_suggestion": "",
+  "show_caret": true
+}
