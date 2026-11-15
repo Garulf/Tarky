@@ -1,3 +1,5 @@
+import graphql
+
 import tarkov_dev
 
 from conftest import ITEM
@@ -21,3 +23,9 @@ def test_items_requests_every_result_field(api):
     sent = api.requests[0]["json"]["query"]
     for field in ITEM:
         assert field in sent
+
+
+def test_items_query_is_valid_graphql(api):
+    tarkov_dev.items.__wrapped__()
+
+    graphql.parse(api.requests[0]["json"]["query"])

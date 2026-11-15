@@ -51,7 +51,7 @@ def items() -> List[Item]:
     """
     new_query = """
     {
-        items() {
+        items {
             id
             name
             shortName
