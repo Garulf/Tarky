@@ -1,4 +1,4 @@
-﻿# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -163,3 +163,7 @@ cython_debug/
 .history/
 .vscode/
 Tarky-*.zip
+.cache.json
+# OS/NAS cruft
+Thumbs.db
+@eaDir/

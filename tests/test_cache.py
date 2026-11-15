@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-import src.cache as cache
+import cache
 
 
 def test_is_file_outdated(tmp_path):
@@ -36,6 +36,3 @@ def test_cache_file(tmp_path, cache_run):
     cache_run()
     with open(tmp_path / "test.json") as f:
         assert json.load(f) == {"test": "test"}
-
-
-
