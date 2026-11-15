@@ -29,3 +29,10 @@ def test_items_query_is_valid_graphql(api):
     tarkov_dev.items.__wrapped__()
 
     graphql.parse(api.requests[0]["json"]["query"])
+
+
+def test_items_reuses_cached_list(api):
+    tarkov_dev.items()
+    tarkov_dev.items()
+
+    assert len(api.requests) == 1

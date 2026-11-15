@@ -46,7 +46,7 @@ def query(query: str) -> httpx.Response:
     )
 
 
-@cache(freshness=0)
+@cache(freshness=300)
 def items() -> List[Item]:
     """Query the Tarkov Dev API for all items.
 
