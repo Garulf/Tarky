@@ -1,5 +1,5 @@
 import logging
-from typing import Any, List, TypedDict
+from typing import Any, List, Optional, TypedDict
 
 import httpx
 
@@ -25,10 +25,10 @@ class Item(TypedDict):
     description: str
     iconLink: str
     link: str
-    low24hPrice: int
-    high24hPrice: int
-    lastLowPrice: int
-    avg24hPrice: int
+    low24hPrice: Optional[int]
+    high24hPrice: Optional[int]
+    lastLowPrice: Optional[int]
+    avg24hPrice: Optional[int]
 
 
 def query(query: str) -> httpx.Response:

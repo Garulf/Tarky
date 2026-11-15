@@ -1,4 +1,4 @@
-from typing import Iterator, List
+from typing import Iterator, List, Optional
 
 from pyflowlauncher.api import open_url
 from pyflowlauncher.result import Result
@@ -10,7 +10,9 @@ from tarkov_dev import Item
 RUB_SYMBOL = "₽"
 
 
-def format_price(price: int, symbol: str) -> str:
+def format_price(price: Optional[int], symbol: str) -> str:
+    if price is None:
+        return "N/A"
     return f"{price:,}{symbol}"
 
 

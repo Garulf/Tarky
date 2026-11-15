@@ -32,3 +32,9 @@ def test_item_results():
 
 def test_item_results_skips_items_that_do_not_match():
     assert list(results.item_results("salewa", [ITEM])) == []
+
+
+def test_item_result_without_flea_prices():
+    result = results.item_result(dict(ITEM, lastLowPrice=None, avg24hPrice=None), 0)
+
+    assert result.subtitle == "Lowest price: N/A, Avg last 24hr: N/A"
