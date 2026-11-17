@@ -1,5 +1,5 @@
 import logging
-from typing import List, TypedDict
+from typing import Any, List, Optional, TypedDict
 
 import httpx
 
@@ -12,6 +12,10 @@ BASE_URL = "https://api.tarkov.dev/graphql"
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
+class TarkovDevError(Exception):
+    """The tarkov.dev API could not be reached or returned no data."""
+
+
 class Item(TypedDict):
     """A Tarkov item."""
 
@@ -21,10 +25,10 @@ class Item(TypedDict):
     description: str
     iconLink: str
     link: str
-    low24hPrice: int
-    high24hPrice: int
-    lastLowPrice: int
-    avg24hPrice: int
+    low24hPrice: Optional[int]
+    high24hPrice: Optional[int]
+    lastLowPrice: Optional[int]
+    avg24hPrice: Optional[int]
 
 
 def query(query: str) -> httpx.Response:
@@ -42,7 +46,7 @@ def query(query: str) -> httpx.Response:
     )
 
 
-@cache(freshness=0)
+@cache(freshness=300)
 def items() -> List[Item]:
     """Query the Tarkov Dev API for all items.
 
@@ -51,7 +55,7 @@ def items() -> List[Item]:
     """
     new_query = """
     {
-        items() {
+        items {
             id
             name
             shortName
@@ -65,4 +69,21 @@ def items() -> List[Item]:
         }
     }
     """
-    return query(new_query).json()["data"]["items"]
+    try:
+        payload = query(new_query).json()
+    except (httpx.HTTPError, ValueError) as error:
+        raise TarkovDevError(str(error)) from error
+    data = payload.get("data") if isinstance(payload, dict) else None
+    if not data or data.get("items") is None:
+        raise TarkovDevError(error_message(payload))
+    return data["items"]
+
+
+def error_message(payload: Any) -> str:
+    errors = payload.get("errors") if isinstance(payload, dict) else None
+    if not errors:
+        return "Unexpected response from tarkov.dev"
+    first = errors[0]
+    if isinstance(first, dict):
+        return str(first.get("message", first))
+    return str(first)

@@ -1,8 +1,10 @@
 import json
+import os
+import time
 
 import pytest
 
-import src.cache as cache
+import cache
 
 
 def test_is_file_outdated(tmp_path):
@@ -38,4 +40,11 @@ def test_cache_file(tmp_path, cache_run):
         assert json.load(f) == {"test": "test"}
 
 
+def test_is_file_outdated_counts_seconds(tmp_path):
+    file_path = tmp_path / "test.json"
+    file_path.touch()
+    ten_minutes_ago = time.time() - 600
+    os.utime(file_path, (ten_minutes_ago, ten_minutes_ago))
 
+    assert cache.is_file_outdated(file_path, 300)
+    assert not cache.is_file_outdated(file_path, 900)

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-component-in-tag": false,
+  "always-update": true,
+  "bootstrap-sha": "765c716cdcfb79a49693b494a4c36b617ce7e3c0",
+  "packages": {
+    ".": {
+      "package-name": "Tarky",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "data/plugin.json",
+          "jsonpath": "$.Version"
+        }
+      ]
+    }
+  }
+}

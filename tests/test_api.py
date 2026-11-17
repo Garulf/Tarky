@@ -1,18 +1,38 @@
-from src.tarkov_dev import query, items
+import graphql
 
-from response import RESPONSE
+import tarkov_dev
+
+from conftest import ITEM
 
 
-def test_query(httpx_mock):
-    httpx_mock.add_response()
+def test_query_posts_to_tarkov_dev(api):
+    response = tarkov_dev.query("{ items { id } }")
 
-    """Test that the query function returns a response."""
-    response = query("{ items { id } }")
     assert response.status_code == 200
+    assert api.requests[0]["url"] == tarkov_dev.BASE_URL
+    assert api.requests[0]["json"] == {"query": "{ items { id } }"}
 
 
-def test_items(httpx_mock):
-    httpx_mock.add_response(json=RESPONSE)
+def test_items_returns_item_list(api):
+    assert tarkov_dev.items.__wrapped__() == [ITEM]
 
-    """Test that the items function returns a list of items."""
-    assert isinstance(items.__wrapped__(), list)
+
+def test_items_requests_every_result_field(api):
+    tarkov_dev.items.__wrapped__()
+
+    sent = api.requests[0]["json"]["query"]
+    for field in ITEM:
+        assert field in sent
+
+
+def test_items_query_is_valid_graphql(api):
+    tarkov_dev.items.__wrapped__()
+
+    graphql.parse(api.requests[0]["json"]["query"])
+
+
+def test_items_reuses_cached_list(api):
+    tarkov_dev.items()
+    tarkov_dev.items()
+
+    assert len(api.requests) == 1
