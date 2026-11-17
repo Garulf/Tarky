@@ -4,7 +4,7 @@
   "Name": "Tarky",
   "Description": "Search Escape from Tarkov items using tarkov.dev",
   "Author": "Garulf",
-  "Version": "0.0.0",
+  "Version": "1.0.0",
   "Language": "python_v2",
   "Website": "https://github.com/Garulf/Tarky",
   "IcoPath": "icon.png",
