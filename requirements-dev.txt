@@ -1,4 +1,4 @@
 -r requirements.txt
-graphql-core==3.2.6
+graphql-core==3.3.2
 pytest==8.3.5
 readwright==0.5.0; python_version >= "3.11"
